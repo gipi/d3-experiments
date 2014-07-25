@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <script>
+            // http://jsfiddle.net/mdml/da37B/
+            document.addEventListener( "DOMContentLoaded", function(){
+                var banner = document.getElementById('banner');
+                banner.textContent = 'd3 version ' + d3.version;
+
+                // select the SVG
+                var svg = d3.select('svg');
+                // the internal slider
+                var slider = svg.select('.g-parameter-value');
+
+                // create the drag behaviour
+                var drag = d3.behavior.drag().on("dragstart", function() {
+                    d3.event.sourceEvent.stopPropagation(); // silence other listeners
+                    console.log('######### dragstart');
+                });
+
+                // and attach it to the slider
+                slider.call(drag);
+            });
+        </script>
+        <div id="banner"></div>
+        <svg height="240" width="545">
+          <g transform="translate(2,205)">
+            <g class="g-bar">
+            <g class="g-parameter-value" transform="translate(174,0)">
+              <path d="M-5.5,-2.5v10l6,5.5l6,-5.5v-10z"/>
+            </g>
+          </g>
+        </svg>
+    </body>
+</html>
