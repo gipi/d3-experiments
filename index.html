@@ -6,6 +6,9 @@
     <body>
         <script>
             // http://jsfiddle.net/mdml/da37B/
+            /**
+             * Here we setup D3 stuffs
+             */
             document.addEventListener( "DOMContentLoaded", function(){
                 var banner = document.getElementById('banner');
                 banner.textContent = 'd3 version ' + d3.version;
@@ -28,6 +31,14 @@
                 // and attach it to the slider
                 slider.call(drag);
             });
+            // this is the model representing the cuts
+            var Lavorazione = {
+                tagli: [],
+
+                add: function(value, count) {
+                    this.tagli.push({"value": value, "count": count});
+                }
+            };
         </script>
         <div id="banner"></div>
         <svg height="240" width="545">
