@@ -30,15 +30,55 @@
 
                 // and attach it to the slider
                 slider.call(drag);
-            });
-            // this is the model representing the cuts
-            var Lavorazione = {
-                tagli: [],
 
-                add: function(value, count) {
-                    this.tagli.push({"value": value, "count": count});
-                }
-            };
+                d3.select('#do').on('click', function() {
+                    var value = d3.select('#value')[0][0].value;
+                    var count = d3.select('#count')[0][0].value;
+
+                    Diagram.add(value, count);
+                });
+
+                // this is the view
+                var Diagram = {
+                    svg: d3.select('svg'),
+                    offset: 0,
+
+                    add: function(value, count) {
+                        function highlight() {
+                            d3.select(this).attr('fill', 'rgba(0, 0, 255, 1)')
+                        }
+
+                        function dehighlight() {
+                            d3.select(this).attr('fill', 'rgba(0, 0, 255, 0.75)')
+                        }
+
+                        var real_width = value * count;
+
+                        this.svg.append('rect')
+                            .attr('class', 'taglio')
+                            .attr('width', real_width)
+                            .attr('height', 240)
+                            .attr('fill', 'rgba(0, 0, 255, 0.75)')
+                            .attr('stroke', 'rgba(0,0,0,.5)')
+                            .attr('x', this.offset)
+                            .attr('y', 0)
+                            .on('mouseover', highlight)
+                            .on('mouseout', dehighlight)
+                                ;
+                            this.offset += real_width;
+                    }
+                };
+
+                // this is the model representing the cuts
+                var Lavorazione = {
+                    tagli: [],
+
+                    add: function(value, count) {
+                        this.tagli.push({"value": value, "count": count});
+                    }
+                };
+            });
+
         </script>
         <div id="banner"></div>
         <svg height="240" width="545">
@@ -49,5 +89,10 @@
             </g>
           </g>
         </svg>
+        <div id="editor">
+            <input id="value" type="text" placeholder="value" />
+            <input id="count" type="text" placeholder="count" />
+            <button id="do">taglia</button>
+        </div>
     </body>
 </html>
