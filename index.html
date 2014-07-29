@@ -2,95 +2,21 @@
 <html>
     <head>
         <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="model.js" charset="utf-8"></script>
+        <script src="view.js" charset="utf-8"></script>
     </head>
     <body>
         <script>
-            // http://jsfiddle.net/mdml/da37B/
             /**
              * Here we setup D3 stuffs
              */
             document.addEventListener( "DOMContentLoaded", function(){
+
+                var Lavorazione = new LavorazioneBuilder();
+                var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count');
                 var banner = document.getElementById('banner');
                 banner.textContent = 'd3 version ' + d3.version;
 
-                d3.select('#do').on('click', function() {
-                    var value = d3.select('#value')[0][0].value;
-                    var count = d3.select('#count')[0][0].value;
-
-                    Diagram.add(value, count);
-                });
-
-                // this is the view
-                var Diagram = {
-                    svg: d3.select('svg'),
-                    blocks: [],
-                    offset: 0,
-
-
-                    removeBlock: function(block) {
-                        block.remove();
-                    },
-
-                    reset: function() {
-                        this.offset = 0;
-                        this.blocks.forEach(this.removeBlock);
-                        this.blocks = [];
-                    },
-                    update: function(model) {
-                        var that = this;
-                        model.tagli.forEach(function(item) {
-                            that.add(item.value, item.count);
-                        });
-                    },
-
-                    add: function(value, count) {
-
-                        function highlight() {
-                            d3.select(this).attr('fill', 'rgba(0, 0, 255, 1)')
-                        }
-
-                        function dehighlight() {
-                            d3.select(this).attr('fill', 'rgba(0, 0, 255, 0.75)')
-                        }
-
-                        var real_width = value * count;
-
-                        // this is the main block
-                        var block = this.svg.append('g');
-                        block.append('rect')
-                            .attr('class', 'taglio')
-                            .attr('width', real_width)
-                            .attr('height', 240)
-                            .attr('fill', 'rgba(0, 0, 255, 0.75)')
-                            .attr('stroke', 'rgba(0,0,0,.5)')
-                            .attr('x', this.offset)
-                            .attr('y', 0)
-                            .on('mouseover', highlight)
-                            .on('mouseout', dehighlight)
-                                ;
-
-                        // this is the closure button
-                        block.append('rect')
-                            .attr('class', 'btn-taglio')
-                            .attr('width', 20)
-                            .attr('height', 20)
-                            .attr('fill', 'rgba(255, 0, 0, 1)')
-                            .attr('x', this.offset + real_width - 25)
-                            .attr('y', 5)
-                                ;
-                        this.offset += real_width;
-                        this.blocks.push(block);
-                    }
-                };
-
-                // this is the model representing the cuts
-                var Lavorazione = {
-                    tagli: [],
-
-                    add: function(value, count) {
-                        this.tagli.push({"value": value, "count": count});
-                    }
-                };
             });
 
         </script>
