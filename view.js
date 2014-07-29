@@ -1,7 +1,8 @@
 // this is the view
-var DiagramBuilder = function (model, svgId, valueId, countId) {
+var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector, summarySelector) {
     var Diagram = {
-        svg: d3.select(svgId),
+        svg: d3.select(svgSelector),
+        summary: d3.select(summarySelector),
         model: model,
         blocks: [],
         offset: 0,
@@ -58,13 +59,23 @@ var DiagramBuilder = function (model, svgId, valueId, countId) {
                     ;
             this.offset += real_width;
             this.blocks.push(block);
+
+            // add voice to the summary
+            this.summary.append('li')
+                    .text(count +'x' + value)
+                    ;
         }
     }
     d3.select('#do').on('click', function() {
-        var value = d3.select(valueId)[0][0].value;
-        var count = d3.select(countId)[0][0].value;
+        var valueInput = d3.select(valueSelector)[0][0];
+        var countInput = d3.select(countSelector)[0][0];
+        var value = valueInput.value;
+        var count = countInput.value;
 
         Diagram.add(value, count);
+
+        valueInput.value = "";
+        countInput.value = "";
     });
 
     return Diagram;
