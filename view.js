@@ -63,6 +63,15 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             this.summary.append('li')
                     .text(count +'x' + value)
                     ;
+        },
+        append: function(value, count) {
+            try {
+                Diagram.model.add(value, count);
+                Diagram.reset();
+                Diagram.update();
+            } catch(e) {
+                this.message[0][0].textContent = 'Error: ' + e.message;
+            }
         }
     }
     d3.select('#do').on('click', function() {
@@ -71,7 +80,7 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
         var value = valueInput.value;
         var count = countInput.value;
 
-        Diagram.add(value, count);
+        Diagram.append(value, count);
 
         valueInput.value = "";
         countInput.value = "";
