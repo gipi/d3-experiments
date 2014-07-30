@@ -28,8 +28,9 @@ var LavorazioneBuilder = function(size) {
                 throw new Error('Inserisci dei valori numerici sensati');
             }
 
-            if ((value * count) > this.available()) {
-                throw new Error('Non abbastanza spazio disponibile per questo taglio');
+            var available = this.available();
+            if ((value * count) > available) {
+                throw new Error('Non abbastanza spazio disponibile per questo taglio (' + available + ')');
             }
 
             this.tagli.push({"value": value, "count": count});
