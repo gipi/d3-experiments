@@ -16,6 +16,7 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             this.offset = 0;
             this.blocks.forEach(this.removeBlock);
             this.blocks = [];
+            this.summary[0][0].textContent = '';
             this.message[0][0].textContent = '';
         },
         update: function() {
