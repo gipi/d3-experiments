@@ -16,9 +16,9 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             this.blocks.forEach(this.removeBlock);
             this.blocks = [];
         },
-        update: function(model) {
+        update: function() {
             var that = this;
-            model.tagli.forEach(function(item) {
+            this.model.tagli.forEach(function(item) {
                 that.add(item.value, item.count);
             });
         },
