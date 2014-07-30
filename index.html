@@ -11,20 +11,22 @@
              * Here we setup D3 stuffs
              */
             document.addEventListener( "DOMContentLoaded", function(){
+                var maximum_size = 550;
 
                 var Lavorazione = new LavorazioneBuilder();
                 var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count', '#summary');
                 var banner = document.getElementById('banner');
                 banner.textContent = 'd3 version ' + d3.version;
 
+                var description = document.querySelectorAll('.instruction > p')[0].textContent =
+                    'Aggiungi i tagli per questa lavorazione indicando il valore del taglio e il numero di tagli '
+                    + 'con quel valore e premendo "taglia" (per adesso il valore massimo di larghezza è ' + maximum_size + ').';
             });
 
         </script>
         <div id="banner"></div>
         <div class="instruction">
-        <p>Aggiungi i tagli per questa lavorazione indicando il valore del taglio e il numero di tagli
-        con quel valore e premendo "taglia" (per adesso il valore massimo di larghezza &egrave; 550).
-        </p>
+        <p></p>
         </div>
         <svg height="250" width="550">
             <rect
