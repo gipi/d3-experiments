@@ -20,10 +20,14 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             this.message[0][0].textContent = '';
         },
         update: function() {
+            this.add(this.model.refiloLeft, 1);
+
             var that = this;
+
             this.model.tagli.forEach(function(item) {
                 that.add(item.value, item.count);
             });
+            this.add(this.model.refiloRight, 1);
         },
 
         add: function(value, count) {
