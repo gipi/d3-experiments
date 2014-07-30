@@ -1,6 +1,7 @@
 // this is the view
 var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector, summarySelector, messageSelector) {
     var Diagram = {
+        height: 240,
         svg: d3.select(svgSelector),
         summary: d3.select(summarySelector),
         message: d3.select(messageSelector),
@@ -53,7 +54,7 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             block.append('rect')
                 .attr('class', 'taglio')
                 .attr('width', real_width)
-                .attr('height', 240)
+                .attr('height', this.height)
                 .attr('fill', 'rgba(0, 0, 255, 0.75)')
                 .attr('stroke', 'rgba(0,0,0,.5)')
                 .attr('x', this.offset)
