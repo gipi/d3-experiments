@@ -7,6 +7,8 @@ var LavorazioneBuilder = function(size) {
     return {
         size: size,
         tagli: [],
+        refiloLeft: 10,
+        refiloRight: 20,
 
         add: function(value, count) {
             if ((value * count) > size) {
@@ -14,6 +16,14 @@ var LavorazioneBuilder = function(size) {
             }
 
             this.tagli.push({"value": value, "count": count});
+        },
+
+        setRefiloLeft: function(value) {
+            this.refiloLeft = value;
+        },
+
+        setRefiloRight: function(value) {
+            this.refiloRight = value;
         }
     }
 };
