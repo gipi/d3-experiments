@@ -24,6 +24,10 @@ var LavorazioneBuilder = function(size) {
         },
 
         add: function(value, count) {
+            if (isNaN(+value) || isNaN(+count) || +value <= 0 || +count <= 0) {
+                throw new Error('Inserisci dei valori numerici sensati');
+            }
+
             if ((value * count) > this.available()) {
                 throw new Error('Non abbastanza spazio disponibile per questo taglio');
             }
