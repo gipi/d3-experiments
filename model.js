@@ -10,9 +10,22 @@ var LavorazioneBuilder = function(size) {
         refiloLeft: 10,
         refiloRight: 20,
 
+        available: function() {
+            var size = this.size;
+
+            this.tagli.forEach(function(s) {
+                size -= (s.value * s.count);
+            });
+
+            size -= this.refiloLeft;
+            size -= this.refiloRight;
+
+            return size;
+        },
+
         add: function(value, count) {
-            if ((value * count) > size) {
-                throw new Error('xxx');
+            if ((value * count) > this.available()) {
+                throw new Error('Non abbastanza spazio disponibile per questo taglio');
             }
 
             this.tagli.push({"value": value, "count": count});
