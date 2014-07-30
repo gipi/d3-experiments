@@ -13,7 +13,7 @@
             document.addEventListener( "DOMContentLoaded", function(){
                 var maximum_size = 550;
 
-                var Lavorazione = new LavorazioneBuilder();
+                var Lavorazione = new LavorazioneBuilder(maximum_size);
                 var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count', '#summary');
                 var banner = document.getElementById('banner');
                 banner.textContent = 'd3 version ' + d3.version;
