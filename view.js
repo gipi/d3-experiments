@@ -35,23 +35,10 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
         },
 
         _buildBlock: function(x, width) {
-            function highlight() {
-                d3.select(this)
-                    .style('opacity', 1)
-                    ;
-            }
-
-            function dehighlight() {
-                var dis = d3.select(this)
-                    .style('opacity', .5)
-                    ;
-            }
 
             // this is the main block
             var block = this.svg.append('g')
                 .style('opacity', .5)
-                .on('mouseover', highlight)
-                .on('mouseout', dehighlight)
                     ;
             block.append('rect')
                 .attr('class', 'taglio')
@@ -82,12 +69,28 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
                 this.rightOffset += real_width;
             }
 
-            this.blocks.push(this._buildBlock(x,real_width));
+            var block = this._buildBlock(x,real_width);
+                block
+                    .on('mouseover', highlight)
+                    .on('mouseout', dehighlight)
+                    ;
+            this.blocks.push(block);
 
             // add voice to the summary
-            this.summary.append('li')
+            var item = this.summary.append('li')
                     .text(count +'x' + value)
+                    .on('mouseover', highlight)
+                    .on('mouseout', dehighlight)
                     ;
+            function highlight() {
+                block.style('opacity', 1);
+                item.style('font-weight', 'bold');
+            }
+
+            function dehighlight() {
+                block.style('opacity', .5);
+                item.style('font-weight', 'normal');
+            }
         },
 
         addLeft: function(value, count) {
