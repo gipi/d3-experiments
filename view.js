@@ -1,8 +1,9 @@
 // this is the view
-var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector, summarySelector) {
+var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector, summarySelector, messageSelector) {
     var Diagram = {
         svg: d3.select(svgSelector),
         summary: d3.select(summarySelector),
+        message: d3.select(messageSelector),
         model: model,
         blocks: [],
         offset: 0,
@@ -15,6 +16,7 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
             this.offset = 0;
             this.blocks.forEach(this.removeBlock);
             this.blocks = [];
+            this.message[0][0].textContent = '';
         },
         update: function() {
             var that = this;

@@ -14,7 +14,7 @@
                 var maximum_size = 550;
 
                 var Lavorazione = new LavorazioneBuilder(maximum_size);
-                var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count', '#summary');
+                var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count', '#summary', '#message');
                 var banner = document.getElementById('banner');
                 banner.textContent = 'd3 version ' + d3.version;
 
@@ -37,6 +37,7 @@
                x="0.5"
                y="0.5" />
         </svg>
+        <div id="message"></div>
         <ul id="summary"></ul>
         <div id="editor">
             <input id="value" type="text" placeholder="value" />
