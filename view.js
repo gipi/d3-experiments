@@ -27,17 +27,24 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
 
         add: function(value, count) {
             function highlight() {
-                d3.select(this).attr('fill', 'rgba(0, 0, 255, 1)')
+                d3.select(this)
+                    .style('opacity', 1)
+                    ;
             }
 
             function dehighlight() {
-                d3.select(this).attr('fill', 'rgba(0, 0, 255, 0.75)')
+                var dis = d3.select(this);
+                dis.style('opacity', .5);
             }
 
             var real_width = value * count;
 
             // this is the main block
-            var block = this.svg.append('g');
+            var block = this.svg.append('g')
+                .style('opacity', .5)
+                .on('mouseover', highlight)
+                .on('mouseout', dehighlight)
+                    ;
             block.append('rect')
                 .attr('class', 'taglio')
                 .attr('width', real_width)
@@ -46,19 +53,8 @@ var DiagramBuilder = function (model, svgSelector, valueSelector, countSelector,
                 .attr('stroke', 'rgba(0,0,0,.5)')
                 .attr('x', this.offset)
                 .attr('y', 0)
-                .on('mouseover', highlight)
-                .on('mouseout', dehighlight)
                     ;
 
-            // this is the closure button
-            block.append('rect')
-                .attr('class', 'btn-taglio')
-                .attr('width', 20)
-                .attr('height', 20)
-                .attr('fill', 'rgba(255, 0, 0, 1)')
-                .attr('x', this.offset + real_width - 25)
-                .attr('y', 5)
-                    ;
             this.offset += real_width;
             this.blocks.push(block);
 
