@@ -2,6 +2,10 @@
 This repository is rendered using the [jekyll](http://jekyllrb.com/) static
 site generator.
 
+## Tests
+
+It's used ``mocha`` to test various javascript functions.
+
 ## Links
 
  - http://d3js.org
