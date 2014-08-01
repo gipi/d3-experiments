@@ -44,12 +44,12 @@ require(['d3'], function(d3) {
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append("g")
+    var svgXAxis = svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis);
 
-      svg.append("g")
+    var svgYAxis = svg.append("g")
           .attr("class", "y axis")
           .call(yAxis)
         .append("text")
@@ -59,12 +59,36 @@ require(['d3'], function(d3) {
           .style("text-anchor", "end")
           .text("Frequency");
 
-    svg.selectAll(".bar")
-          .data(data)
-        .enter().append("rect")
-          .attr("class", "bar")
-          .attr("x", function(d) { return x(d.r); })
-          .attr("width", x.rangeBand())
-          .attr("y", function(d) { return y(d.frequency); })
-          .attr("height", function(d) { return height - y(d.frequency); });
+    /**
+     * Draw the bar graph using the data in the array.
+     */
+    function updateGraph() {
+        x.domain(data.map(function(d) { return d.r; }));
+        //y.domain(d3.extent(data, function(d) {return d.frequency;}));
+
+        //svgYAxis.call(yAxis);
+        svgXAxis.call(xAxis);
+
+        console.log('range band: ' + x.rangeBand());
+
+        var graph = svg.selectAll(".bar")
+            .data(data);
+
+        graph.exit().remove();
+
+        graph
+            .enter().append("rect")
+              .attr("class", "bar")
+              ;
+
+        graph
+              .attr("x", function(d) { return x(d.r); })
+              .attr("width", x.rangeBand())
+              .attr("y", function(d) { return y(d.frequency); })
+              .attr("height", function(d) { return height - y(d.frequency); })
+              ;
+
+    }
+
+    updateGraph();
 });
