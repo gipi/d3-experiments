@@ -1,3 +1,7 @@
+
+This repository is rendered using the [jekyll](http://jekyllrb.com/) static
+site generator.
+
 ## Links
 
  - http://d3js.org
