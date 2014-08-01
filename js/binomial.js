@@ -25,7 +25,7 @@ require(['d3'], function(d3) {
 
     var y = d3.scale.linear()
         .range([height, 0])
-        .domain([0, d3.max(data, function(d) { return d.frequency; })])
+        .domain([0, 1])
         ;
 
     var xAxis = d3.svg.axis()
