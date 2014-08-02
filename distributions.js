@@ -10,7 +10,7 @@ define(['./combinatorial'], function(combinatorial) {
                 getAll: function() {
                     var values = [];
                     for (index = 0 ; index <= this.N ; index++) {
-                        values.push(this.get(index));
+                        values.push({'r': index, 'frequency': this.get(index)});
                     }
 
                     return values;

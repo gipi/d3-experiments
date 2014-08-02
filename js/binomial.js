@@ -59,6 +59,13 @@ require(['d3', '../distributions'], function(d3, probability) {
           .style("text-anchor", "end")
           .text("Frequency");
 
+    d3.select('#N').on('input', function() {
+        data = probability.BinomialDistribution(this.value, .5 ).getAll();
+        console.log(JSON.stringify(data));
+
+        updateGraph();
+    });
+
     /**
      * Draw the bar graph using the data in the array.
      */
@@ -87,7 +94,6 @@ require(['d3', '../distributions'], function(d3, probability) {
               .attr("y", function(d) { return y(d.frequency); })
               .attr("height", function(d) { return height - y(d.frequency); })
               ;
-
     }
 
     updateGraph();
