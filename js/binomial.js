@@ -5,6 +5,7 @@ require.config({
 });
 
 require(['d3', '../distributions'], function(d3, probability) {
+    var N = 5, f = .1;
 
     data = [
         { 'r': 0, 'frequency': .05},
@@ -37,7 +38,6 @@ require(['d3', '../distributions'], function(d3, probability) {
         .orient("left")
         .ticks(10, "%");
 
-
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -59,8 +59,18 @@ require(['d3', '../distributions'], function(d3, probability) {
           .style("text-anchor", "end")
           .text("Frequency");
 
+    d3.select('#f').on('input', function() {
+        f = +this.value;
+
+        data = probability.BinomialDistribution(N, f).getAll();
+        console.log(JSON.stringify(data));
+
+        updateGraph();
+    });
+
     d3.select('#N').on('input', function() {
-        data = probability.BinomialDistribution(this.value, .5 ).getAll();
+        N = +this.value;
+        data = probability.BinomialDistribution(N, f).getAll();
         console.log(JSON.stringify(data));
 
         updateGraph();
@@ -71,9 +81,16 @@ require(['d3', '../distributions'], function(d3, probability) {
      */
     function updateGraph() {
         x.domain(data.map(function(d) { return d.r; }));
-        //y.domain(d3.extent(data, function(d) {return d.frequency;}));
+        y.domain([0, d3.max(data, function(d) {return d.frequency;})]);
 
-        //svgYAxis.call(yAxis);
+        svg.select('g.y.axis')
+            .call(yAxis)
+            .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Frequency");
         svgXAxis.call(xAxis);
 
         console.log('range band: ' + x.rangeBand());
