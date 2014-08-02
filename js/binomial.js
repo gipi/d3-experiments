@@ -4,7 +4,7 @@ require.config({
   }
 });
 
-require(['d3'], function(d3) {
+require(['d3', '../distributions'], function(d3, probability) {
 
     data = [
         { 'r': 0, 'frequency': .05},
