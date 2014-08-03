@@ -22,6 +22,12 @@ define(['./combinatorial'], function(combinatorial) {
                     }
 
                     return values;
+                },
+                mean: function() {
+                    return this.N * this.f;
+                },
+                variance: function() {
+                    return N * f * (1 - f);
                 }
             }
         }
