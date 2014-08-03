@@ -1,6 +1,8 @@
 
 This repository is rendered using the [jekyll](http://jekyllrb.com/) static
-site generator.
+site generator, to try it locally use
+
+    $ make local
 
 ## Tests
 
