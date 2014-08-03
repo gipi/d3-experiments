@@ -18,3 +18,4 @@ It's used ``mocha`` to test various javascript functions.
  - http://www.sitepoint.com/svg-styling-with-css/
  - [continous chart](http://bl.ocks.org/mbostock/3883245)
  - [margin convention](http://bl.ocks.org/mbostock/3019563)
+ - [Markov chain](http://setosa.io/blog/2014/07/26/markov-chains/)
