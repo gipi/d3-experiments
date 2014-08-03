@@ -5,15 +5,14 @@ require.config({
 });
 
 require(['d3', '../distributions'], function(d3, probability) {
-    var N = 5, f = .1;
+    var parameter = {'N': 5, 'f': .1};
+    var constructor = probability.BinomialDistribution;
+    var opts = {
+        'N': ':input',
+        'f': ':input'
+    };
 
-    data = [
-        { 'r': 0, 'frequency': .05},
-        { 'r': 1, 'frequency': .1},
-        { 'r': 2, 'frequency': .2},
-        { 'r': 3, 'frequency': .25},
-        { 'r': 4, 'frequency': .2}
-    ];
+    data = []
 
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
@@ -59,22 +58,20 @@ require(['d3', '../distributions'], function(d3, probability) {
           .style("text-anchor", "end")
           .text("Frequency");
 
-    d3.select('#f').on('input', function() {
-        f = +this.value;
+    // attach callback to the editing of the inputs
+    for (var k in opts) {
+        var callback = function(l) {
+            return function() {
+                parameter[l] = +this.value;
 
-        data = probability.BinomialDistribution(N, f).getAll();
-        console.log(JSON.stringify(data));
+                data = new constructor(parameter['N'], parameter['f']).getAll();
+                console.log(JSON.stringify(data));
+                updateGraph();
+            };
+        };
 
-        updateGraph();
-    });
-
-    d3.select('#N').on('input', function() {
-        N = +this.value;
-        data = probability.BinomialDistribution(N, f).getAll();
-        console.log(JSON.stringify(data));
-
-        updateGraph();
-    });
+        d3.select('#' + k).on('input', callback(k));
+    }
 
     /**
      * Draw the bar graph using the data in the array.
