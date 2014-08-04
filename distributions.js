@@ -27,7 +27,7 @@ define(['./combinatorial'], function(combinatorial) {
                     return this.N * this.f;
                 },
                 variance: function() {
-                    return N * f * (1 - f);
+                    return this.N * this.f * (1 - this.f);
                 }
             }
         }
