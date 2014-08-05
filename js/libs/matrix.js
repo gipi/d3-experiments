@@ -25,14 +25,21 @@ define(["d3"], function(d3) {
                 return objs;
             },
 
+            setData: function(data) {
+                this.data = this.adapter(data);
+            },
+
             // take a matrix as argument
             update: function(data) {
+                this.setData(data);
+
                 var that = this;
                 var cx = function(d) {
                     return d.x * that.max + ((that.max - d.value) / 2);
                 };
+
                 this.svg.selectAll('rect')
-                    .data(this.adapter(data))
+                    .data(this.data)
                         .enter().append('rect')
                     .attr('x', cx)
                     .attr('y', function(d) { return d.y * that.max + ((that.max - d.value) / 2); })
