@@ -41,6 +41,9 @@ define(["d3"], function(d3) {
                 this.svg.selectAll('rect')
                     .data(this.data)
                         .enter().append('rect')
+                        ;
+                this.svg.selectAll('rect')
+                    .data(this.data)
                     .attr('x', cx)
                     .attr('y', function(d) { return d.y * that.max + ((that.max - d.value) / 2); })
                     .attr('width', function(d) { return d.value; })
