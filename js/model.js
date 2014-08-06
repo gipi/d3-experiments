@@ -42,6 +42,17 @@ var LavorazioneBuilder = function(size) {
 
         setRefiloRight: function(value) {
             this.refiloRight = value;
+        },
+
+        updateTaglio: function(index, obj) {
+            // save here just in case the new values are wrong
+            var old = this.tagli[index];
+            this.tagli[index] = obj;
+
+            if (this.available() < 0) {
+                this.tagli[index] = old;
+                throw new Error('non c\'è più spazio disponibile');
+            }
         }
     }
 };

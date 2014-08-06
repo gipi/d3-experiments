@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <script src="model.js" charset="utf-8"></script>
-        <script src="view.js" charset="utf-8"></script>
-    </head>
-    <body>
+---
+layout: base
+extra_js: ["http://d3js.org/d3.v3.min.js", js/model.js, js/view.js]
+---
         <script>
             /**
              * Here we setup D3 stuffs
@@ -46,5 +42,3 @@
             <input id="count" type="text" placeholder="count" />
             <button id="do">taglia</button>
         </div>
-    </body>
-</html>
