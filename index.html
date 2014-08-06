@@ -1,44 +1,19 @@
 ---
 layout: base
-extra_js: ["http://d3js.org/d3.v3.min.js", js/model.js, js/view.js]
 ---
-        <script>
-            /**
-             * Here we setup D3 stuffs
-             */
-            document.addEventListener( "DOMContentLoaded", function(){
-                var maximum_size = 550;
-
-                var Lavorazione = new LavorazioneBuilder(maximum_size);
-                var Diagram = new DiagramBuilder(Lavorazione, 'svg', '#value', '#count', '#summary', '#message');
-
-                Diagram.update();
-                var banner = document.getElementById('banner');
-                banner.textContent = 'd3 version ' + d3.version;
-
-                var description = document.querySelectorAll('.instruction > p')[0].textContent =
-                    'Aggiungi i tagli per questa lavorazione indicando il valore del taglio e il numero di tagli '
-                    + 'con quel valore e premendo "taglia" (per adesso il valore massimo di larghezza è ' + maximum_size + ').';
-            });
-
-        </script>
-        <div id="banner"></div>
-        <div class="instruction">
-        <p></p>
-        </div>
-        <svg height="250" width="550">
-            <rect
-               style="color:#000000;fill:none;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-               id="rect2985"
-               width="545"
-               height="240"
-               x="0.5"
-               y="0.5" />
-        </svg>
-        <div id="message"></div>
-        <ul id="summary"></ul>
-        <div id="editor">
-            <input id="value" type="text" placeholder="value" />
-            <input id="count" type="text" placeholder="count" />
-            <button id="do">taglia</button>
-        </div>
+<div class="jumbotron">
+  <h1>Hola</h1>
+  <p>This page contains link to several experiments about <b>D3js</b> a javascript library
+  intended to be used with data visualization.</p>
+  <p>Since I'm studing statistics I will try to port some example here.</p>
+</div>
+<div class="container">
+    <div class="row">
+    </div>
+</div>
+<div class="row">
+    {% include summary.html title="Binomial distribution" description="One of the first distribution studied in statistics" path="binomial.html" %}
+    {% include summary.html title="Poisson distribution" description="Another simple distribution" %}
+  {% include summary.html title="Frequencies" description="Load a file and see what bytes is composed of" path="dndfiles.html" %}
+  {% include summary.html title="Lavorazioni" description="Trying to find the best UI for a customer flow" path="lavorazione.html" %}
+</div>
