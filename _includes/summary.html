@@ -3,7 +3,7 @@
       <div class="caption">
         <h3>{{ include.title }}</h3>
         <p>{{ include.description }}</p>
-        <p><a href="{% if include.path %}{{ include.path }}{% else %}#{% endif %}" class="btn btn-{% if include.path %}success{% else %}danger{% endif %}" role="button">Go</a></p>
+        <p><a href="{% if include.path %}{{ include.path }}{% else %}#{% endif %}" class="btn btn-{% if include.path %}success{% else %}danger{% endif %}" role="button">{% if include.path %}Go{% else %}Coming soon{% endif %}</a></p>
       </div>
     </div>
   </div>
