@@ -1,31 +1,26 @@
 define(['handlebars', 'd3', 'longitudinale'], function(_, d3, Lon) {
     
+    function attachFromTemplate(parent, templateID, context) {
+        var source = document.getElementById(templateID).innerHTML;
+        var template = _.compile(source);
+        var html = template(context);
+
+        parent.insertAdjacentHTML('beforeend', html);
+    }
+
    // here we create the controller of all the elements
    // primarly the "cut" button -> model -> model view
    var GUI = function(id, model) {
        // attach the DOM for the interface
         var node = document.getElementById(id);
 
-        var masterNode = document.createElement('div');
-        masterNode.setAttribute('id', 'master');
-        node.appendChild(masterNode);
-        masterNode.setAttribute('class', 'col-sm-12');
+        attachFromTemplate(node, 'long-ui', {});
 
-        var buttonNode = document.createElement('button');
-        masterNode.appendChild(buttonNode);
-        buttonNode.setAttribute('class', 'btn btn-success');
-        buttonNode.innerHTML = 'taglia!!!';
+        var buttonNode = document.getElementById('cut-btn');
+        var masterNode = document.getElementById('lon-svg');
 
         function attachCut() {
-            var source = document.getElementById('single-cut').innerHTML;
-            var template = _.compile(source);
-            var context = {svg: originalSVGNode.outerHTML};
-            var html = template(context);
-
-            var div = document.createElement('div');
-            div.innerHTML = html;
-
-            masterNode.appendChild(div);
+            attachFromTemplate(node, 'single-cut', {svg: originalSVGNode.outerHTML});
         }
 
         var originalSVGNode = null,
