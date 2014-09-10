@@ -12,7 +12,7 @@ define([], function() {
             // update the view with the data inside the model
             update: function() {
                 // clean the cuts
-                this.d3Svg.select('#cut-container').select('g').remove();
+                this.d3Svg.select('#cut-container').selectAll('g').remove();
 
                 this._offset = 0;
 
