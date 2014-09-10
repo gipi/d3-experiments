@@ -1,5 +1,5 @@
 define([], function() {
-
+   // the model will contain the real width of the object
    var Lon = function(svg, model) {
        var svgNode = svg.cloneNode(true);
         return {
@@ -8,6 +8,7 @@ define([], function() {
             parent: null,
             model: model,
             _offset: 0,
+            _geometric_size: 224,
 
             // update the view with the data inside the model
             update: function() {
@@ -21,13 +22,17 @@ define([], function() {
                     var cut = this.model.tagli[count];
                     var width = cut.count * cut.value;
 
-                    this.addCut(count, this._offset, width);
+                    // switch from real units (mm?) to geometric units
+                    // geometric_width/width : _geometric_size/model.size
+                    var geometric_width = (this._geometric_size/this.model.size) * width;
 
-                    this._offset += width;
+                    this.addCut(count, this._offset, geometric_width);
+
+                    this._offset += geometric_width;
                 }
             },
 
-            // add a visualization of a single cut
+            // add a visualization of a single cut (args in geometric units)
             addCut: function(cutId, offset, width) {
                 var g = this.d3Svg.select('#cut-container').insert('g', ':first-child')
                     .attr('id', 'cut-' + cutId)
