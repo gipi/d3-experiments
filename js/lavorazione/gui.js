@@ -31,7 +31,9 @@ define(['handlebars', 'd3', 'longitudinale'], function(_, d3, Lon) {
             longitudinale = Lon(originalSVGNode, model);
             longitudinale.attach(masterNode);
 
-            buttonNode.addEventListener('click', function() {
+            buttonNode.addEventListener('click', function(evt) {
+                // do not submit the form
+                evt.preventDefault();
                 model.add(5, 20);
                 longitudinale.update();
                 attachCut();
