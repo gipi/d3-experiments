@@ -11,8 +11,8 @@ define([], function() {
             dint: dint,
             dout: dout,
             tagli: [],
-            refiloLeft: 10,
-            refiloRight: 20,
+            refiloLeft: 0,// FIXME: make the refilo modifiable
+            refiloRight: 0,
 
             available: function() {
                 var size = this.size;
