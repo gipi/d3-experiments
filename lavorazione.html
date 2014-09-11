@@ -17,19 +17,25 @@ layout: base
                     <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">Diametro interno</label>
                         <div class="col-sm-3">
-                          <input type="integer" class="form-control" id="inputPassword" placeholder="500" value="500">
+                          <input type="integer" class="form-control" id="inputPassword" value="{{ dint }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-2 control-label">Diametro esterno</label>
+                        <div class="col-sm-3">
+                          <input type="integer" class="form-control" id="inputPassword" value="{{ dout }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">Larghezza</label>
                         <div class="col-sm-3">
-                          <input type="integer" class="form-control" id="inputPassword" placeholder="500" value="1250">
+                          <input type="integer" class="form-control" id="inputPassword" value="{{ width }}">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-sm-2 control-label">Peso</label>
                         <div class="col-sm-3">
-                          <input type="integer" class="form-control" id="inputPassword" placeholder="500" value="5000">
+                          <input type="integer" class="form-control" id="inputPassword" value="{{ weight }}">
                         </div>
                     </div>
                 </form>
@@ -38,15 +44,15 @@ layout: base
             <div class="col-sm-4">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-6 control-label">Numero tagli</label>
+                        <label for="nTagli" class="col-sm-6 control-label">Numero tagli</label>
                         <div class="col-sm-6">
-                          <input type="integer" class="form-control" id="inputPassword" placeholder="1" value="1">
+                          <input type="integer" class="form-control" id="nTagli" name="nTagli">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-6 control-label">Larghezza tagli</label>
+                        <label for="larghezzaTagli" class="col-sm-6 control-label">Larghezza tagli</label>
                         <div class="col-sm-6">
-                          <input type="integer" class="form-control" id="inputPassword" placeholder="500">
+                          <input type="integer" class="form-control" id="larghezzaTagli">
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,13 +75,19 @@ layout: base
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Numero tagli</label>
                     <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="inputEmail3" value="3">
+                      <input type="integer" class="form-control" id="inputEmail3" value="{{ n }}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Larghezza tagli</label>
                     <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="inputPassword3" value="50">
+                      <input type="integer" class="form-control" id="inputPassword3" value="{{ larghezza }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Peso</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="inputPassword3" value="{{ weight }}">
                     </div>
                   </div>
                   <div class="form-group">
@@ -105,6 +117,14 @@ layout: base
                     <label for="inputPassword3" class="col-sm-2 control-label">Altezza max collo</label>
                     <div class="col-sm-6">
                       <input type="integer" class="form-control" id="inputPassword3" value="1500">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Imballo</label>
+                    <div class="col-sm-6">
+                      <select  class="selectpicker">
+                        <option style="background-image:url(images/imballo-000.jpg);">porcodio</option>
+                      </select>
                     </div>
                   </div>
                   <button type="button" class="btn btn-danger">

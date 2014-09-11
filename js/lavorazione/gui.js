@@ -14,13 +14,18 @@ define(['handlebars', 'd3', 'longitudinale'], function(_, d3, Lon) {
        // attach the DOM for the interface
         var node = document.getElementById(id);
 
-        attachFromTemplate(node, 'long-ui', {});
+        attachFromTemplate(node, 'long-ui', {
+            dint: model.dint,
+            dout: model.dout,
+            weight: model.weight,
+            width: model.size
+        });
 
         var buttonNode = document.getElementById('cut-btn');
         var masterNode = document.getElementById('lon-svg');
 
-        function attachCut() {
-            attachFromTemplate(node, 'single-cut', {svg: originalSVGNode.outerHTML});
+        function attachCutUI(n, larghezza, weight) {
+            attachFromTemplate(node, 'single-cut', {n: n, larghezza: larghezza, weight: weight});
         }
 
         var originalSVGNode = null,
@@ -32,11 +37,18 @@ define(['handlebars', 'd3', 'longitudinale'], function(_, d3, Lon) {
             longitudinale.attach(masterNode);
 
             buttonNode.addEventListener('click', function(evt) {
+                var nTagliNode = document.getElementById('nTagli');
+                var larghezzaTagliNode = document.getElementById('larghezzaTagli');
+
+                var n = +nTagliNode.value;
+                var larghezza = +larghezzaTagliNode.value;
+                var peso = model.weight * ((larghezza * n) / model.size);
+
                 // do not submit the form
                 evt.preventDefault();
-                model.add(5, 20);
+                model.add(n, larghezza);
                 longitudinale.update();
-                attachCut();
+                attachCutUI(n, larghezza, peso);
             });
 
         });
