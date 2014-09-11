@@ -1,12 +1,15 @@
 // this is the model representing the cuts
 define([], function() {
-    var LavorazioneBuilder = function(size) {
-        if (size === undefined) {
-            throw new Error('missing size parameter');
+    var LavorazioneBuilder = function(size, weight, dint, dout) {
+        if (size === undefined || weight === undefined || dint === undefined || dout === undefined) {
+            throw new Error('missing one or more of size, weight, internal and external diameter parameters');
         }
 
         return {
             size: size,
+            weight: weight,
+            dint: dint,
+            dout: dout,
             tagli: [],
             refiloLeft: 10,
             refiloRight: 20,
