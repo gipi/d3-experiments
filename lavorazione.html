@@ -69,70 +69,147 @@ layout: base
     </script>
     <script id="single-cut" type="text/x-handlebars-template">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <h2>Taglio</h2>
                 <form class="form-horizontal" role="form">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Numero tagli</label>
-                    <div class="col-sm-6">
+                    <label for="inputEmail3" class="col-sm-4 control-label">N.</label>
+                    <div class="col-sm-3">
                       <input type="integer" class="form-control" id="inputEmail3" value="{{ n }}">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Larghezza tagli</label>
-                    <div class="col-sm-6">
+                    <label for="inputPassword3" class="col-sm-4 control-label">Larghezza</label>
+                    <div class="col-sm-8">
                       <input type="integer" class="form-control" id="inputPassword3" value="{{ larghezza }}">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Peso</label>
-                    <div class="col-sm-6">
+                    <label for="inputPassword3" class="col-sm-4 control-label">Peso</label>
+                    <div class="col-sm-8">
                       <input type="integer" class="form-control" id="inputPassword3" value="{{ weight }}">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Peso max pezzo</label>
+                    <label for="inputPassword3" class="col-sm-4 control-label">Tagli trasversali</label>
+                    <div class="col-sm-3">
+                      <input type="integer" class="form-control" id="inputPassword3">
+                    </div>
+                  </div>
+                  <div class="checkbox">
+                    <label class="col-sm-4 control-label">
+                      <input type="checkbox"> Riavvolgi
+                    </label>
+                  </div>
+                </form>
+              </div>
+            <div class="col-sm-3">
+                <h2>Vincoli</h2>
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Peso max collo</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="inputEmail3" value="2000">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-6 control-label">Altezza max collo</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="inputPassword3" value="1500">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-6 control-label">Peso max pezzo</label>
                     <div class="col-sm-6">
                       <input type="integer" class="form-control" id="inputPassword3" value="150">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Diametro interno</label>
+                    <label for="inputPassword3" class="col-sm-6 control-label">Diametro interno</label>
                     <div class="col-sm-6">
                       <input type="integer" class="form-control" id="inputPassword3" value="600">
                     </div>
                   </div>
                 </form>
               </div>
-            <div class="col-sm-6">
-                <h2>Imballo</h2>
+            <div class="col-sm-3">
+                <h2>Costi</h2>
                 <form class="form-horizontal" role="form">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Peso max collo</label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Base</label>
                     <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="inputEmail3" value="2000">
+                      <input type="integer" class="form-control" id="extraTrasv">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Altezza max collo</label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Extra spessore</label>
                     <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="inputPassword3" value="1500">
+                      <input type="integer" class="form-control" id="extraTrasv">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Imballo</label>
+                    <label for="inputEmail3" class="col-sm-6 control-label">Extra peso</label>
                     <div class="col-sm-6">
-                      <select  class="selectpicker">
-                        <option style="background-image:url(images/imballo-000.jpg);">porcodio</option>
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Extra larghezza</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Extra interruzioni</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Extra n. tagli</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Altro</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <div class="col-sm-3">
+                <h2>Colli</h2>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Collo1</label>
+                        <div class="col-sm-10">
+                          <p class="form-control-static">3 pezzi da 150Kg cadauno</p>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Collo2</label>
+                        <div class="col-sm-10">
+                          <p class="form-control-static">2 pezzi da 150Kg cadauno</p>
+                        </div>
+                      </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label">Imballo</label>
+                    <div class="col-sm-9">
+                      <select class="form-control">
+                        <option style="background-image:url(images/imballo-000.jpg);">imballo 1</option>
+                        <option style="background-image:url(images/imballo-000.jpg);">imballo 2</option>
+                        <option style="background-image:url(images/imballo-000.jpg);">imballo 3</option>
                       </select>
                     </div>
                   </div>
+                </form>
+              </div>
                   <button type="button" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove"></span> Rimuovi
                   </button>
-                </form>
-              </div>
-            </div>
+            </div><!-- .row -->
     </script>
     {% endraw %}
         <script>
