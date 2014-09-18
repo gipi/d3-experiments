@@ -7,41 +7,45 @@ layout: base
         <div id="master" class="col-sm-12">
             <h1>Lavorazione longitudinale</h1>
             <div class="col-sm-6">
+                <h2>Genitore</h2>
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Qualita</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-6 control-label">Qualita</label>
+                        <div class="col-sm-6">
                           <p class="form-control-static">LAF</p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Diametro interno</label>
-                        <div class="col-sm-3">
+                        <label for="inputPassword" class="col-sm-6 control-label">Diametro interno</label>
+                        <div class="col-sm-6">
                           <input type="integer" class="form-control" id="inputPassword" value="{{ dint }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Diametro esterno</label>
-                        <div class="col-sm-3">
+                        <label for="inputPassword" class="col-sm-6 control-label">Diametro esterno</label>
+                        <div class="col-sm-6">
                           <input type="integer" class="form-control" id="inputPassword" value="{{ dout }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Larghezza</label>
-                        <div class="col-sm-3">
+                        <label for="inputPassword" class="col-sm-6 control-label">Larghezza</label>
+                        <div class="col-sm-6">
                           <input type="integer" class="form-control" id="inputPassword" value="{{ width }}">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Peso</label>
-                        <div class="col-sm-3">
+                        <label for="inputPassword" class="col-sm-6 control-label">Peso</label>
+                        <div class="col-sm-6">
                           <input type="integer" class="form-control" id="inputPassword" value="{{ weight }}">
                         </div>
                     </div>
                 </form>
-            </div>
+            </div><!-- .col -->
             <div id="lon-svg" class="col-sm-6"></div>
-            <div class="col-sm-4">
+    </div>
+    <div class="row">
+            <div class="col-sm-6">
+            <h2>Genera taglio</h2>
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="nTagli" class="col-sm-6 control-label">Numero tagli</label>
@@ -62,6 +66,42 @@ layout: base
                                 <span class="glyphicon glyphicon-plus-sign"></span>
                             </button>
                         </div>
+                    </div>
+                </form>
+            </div><!-- .col -->
+            <div class="col-sm-6">
+                <h2>Costi globali</h2>
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-6 control-label">Base</label>
+                        <div class="col-sm-6">
+                          <input type="integer" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-6 control-label">Extra spessore</label>
+                        <div class="col-sm-6">
+                          <input type="integer" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-6 control-label">Extra peso</label>
+                        <div class="col-sm-6">
+                          <input type="integer" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-6 control-label">Extra lunghezza</label>
+                        <div class="col-sm-6">
+                          <input type="integer" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-sm-6 control-label">Extra N. tagli</label>
+                        <div class="col-sm-6">
+                          <input type="integer" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -136,30 +176,6 @@ layout: base
                 <h2>Costi</h2>
                 <form class="form-horizontal" role="form">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-6 control-label">Base</label>
-                    <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="extraTrasv">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-6 control-label">Extra spessore</label>
-                    <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="extraTrasv">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-6 control-label">Extra peso</label>
-                    <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="extraTrasv">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-6 control-label">Extra larghezza</label>
-                    <div class="col-sm-6">
-                      <input type="integer" class="form-control" id="extraTrasv">
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label for="inputEmail3" class="col-sm-6 control-label">Extra interruzioni</label>
                     <div class="col-sm-6">
                       <input type="integer" class="form-control" id="extraTrasv">
@@ -167,6 +183,18 @@ layout: base
                   </div>
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-6 control-label">Extra n. tagli</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Supporto</label>
+                    <div class="col-sm-6">
+                      <input type="integer" class="form-control" id="extraTrasv">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-6 control-label">Imballo</label>
                     <div class="col-sm-6">
                       <input type="integer" class="form-control" id="extraTrasv">
                     </div>
