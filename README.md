@@ -21,3 +21,4 @@ It's used ``mocha`` to test various javascript functions.
  - [Markov chain](http://setosa.io/blog/2014/07/26/markov-chains/)
  - [Path transitions](http://bl.ocks.org/mbostock/1642874)
  - http://www.d3noob.org/2014/02/grouping-and-summing-data-using-d3nest.html
+ - http://www.jeromecukier.net/blog/2012/05/28/manipulating-data-like-a-boss-with-d3/
