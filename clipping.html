@@ -1,0 +1,34 @@
+---
+layout: base
+---
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<p>Example of the <tt>clipPath</tt> usage with D3: a 100x100 red square is clipped against a 80x50 rectangle.</p>
+<div id="graph"></div>
+<script>
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+    var svg = d3.select('#graph').append('svg')
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            ;
+    svg.append('svg:rect')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', 100)
+        .attr('height', 100)
+        .attr('fill', '#ff0000')
+        .attr('clip-path', 'url(#clip)')
+        ;
+    // add a clip path
+    svg.append("defs").append("clipPath")
+        .attr("id", "clip")
+        .append("rect")
+        .attr('x', 0)
+        .attr('x', 0)
+        .attr("width", 80)
+        .attr("height", 50);
+</script>
+
