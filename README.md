@@ -20,3 +20,4 @@ It's used ``mocha`` to test various javascript functions.
  - [margin convention](http://bl.ocks.org/mbostock/3019563)
  - [Markov chain](http://setosa.io/blog/2014/07/26/markov-chains/)
  - [Path transitions](http://bl.ocks.org/mbostock/1642874)
+ - http://www.d3noob.org/2014/02/grouping-and-summing-data-using-d3nest.html
