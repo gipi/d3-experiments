@@ -1,0 +1,50 @@
+---
+layout: base
+---
+<p>
+This is the quick&amp;dirty way to start a <tt>D3</tt> project: start creating
+a <tt>svg</tt> centered with the given margins
+</p>
+<pre>
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+</pre>
+<p>
+After that probably you want to define some scales that maps the values of your data (the domain) into
+the coordinates (the range) of the graph; if you want something linear (note that the
+range part of the <tt>y</tt> axis is reversed) below the example:
+</p>
+<pre>
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1)
+    .domain([0, 1])
+    ;
+var y = d3.scale.linear()
+    .range([height, 0])
+    .domain([0, 1])
+    ;
+</pre>
+<p>
+Obviously you can associate an axes to the scale:
+</p>
+<pre>
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var svgXAxis = svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+</pre>
+<p>Instead if you want for example colors</p>
+<pre>
+var color = d3.scale.category10();
+</pre>
